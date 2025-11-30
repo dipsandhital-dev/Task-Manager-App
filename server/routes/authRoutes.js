@@ -1,12 +1,22 @@
 const express = require('express'); 
-const { registerUser, loginUser, getUserProfile, updateUserProfile } = require('../controllers/authController'); // ← FIXED SPELLING
-const router  = express.Router(); 
+const { registerUser, loginUser, getUserProfile, updateUserProfile } = require('../controllers/authController');
+const router = express.Router(); 
 const { protect } = require('../middlewares/authMiddleware');
+const upload = require('../middlewares/uploadMiddleware');
 
 // ! Auth Routes 
 router.post("/register", registerUser);
 router.post('/login', loginUser);
 router.get('/profile', protect, getUserProfile); 
-router.put('/profile', protect, updateUserProfile); // ← Now receives actual function
+router.put('/profile', protect, updateUserProfile); 
+
+// ! Upload image route 
+router.post("/upload-image", upload.single("image"), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: "No file uploaded" });
+    }
+    const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    res.status(200).json({ imageUrl }); 
+});
 
 module.exports = router;
