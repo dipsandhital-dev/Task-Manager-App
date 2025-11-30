@@ -1,0 +1,34 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "![License](https://img.shields.io/badge/license-MIT-blue.svg)\r ![React](https://img.shields.io/badge/React-18.x-%2361DAFB?logo=react)\r ![Node.js](https://img.shields.io/badge/Node.js-18.x-%23339933?logo=node.js)\r ![MongoDB](https://img.shields.io/badge/MongoDB-%2347A248?logo=mongodb)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dipsandhital-dev/Task-Manager-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dipsandhital-dev/Task-Manager-App/issues"
+  },
+  "homepage": "https://github.com/dipsandhital-dev/Task-Manager-App#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "exceljs": "^4.4.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.0.0",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11"
+  }
+}
