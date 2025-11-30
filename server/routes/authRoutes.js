@@ -1,13 +1,12 @@
-
 const express = require('express'); 
+const { registerUser, loginUser, getUserProfile, updateUserProfile } = require('../controllers/authController'); // ← FIXED SPELLING
 const router  = express.Router(); 
-
+const { protect } = require('../middlewares/authMiddleware');
 
 // ! Auth Routes 
-router.post("/register",registerUser);   // Register User
-// router.post('/login', loginUser);    Login User
-router.get('/profile', protect, getUsrProfile);  // Get User Profile 
-router.put('/profile', protect, updateUserProfile);  // Update Profle 
+router.post("/register", registerUser);
+router.post('/login', loginUser);
+router.get('/profile', protect, getUserProfile); 
+router.put('/profile', protect, updateUserProfile); // ← Now receives actual function
 
-
-module.exports=router; 
+module.exports = router;

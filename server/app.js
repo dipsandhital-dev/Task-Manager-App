@@ -1,26 +1,24 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const connectDB = require('./config/db');
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const connectDB = require("./config/db");
+
+const authRoutes = require("./routes/authRoutes");
 
 connectDB();
-
-
-
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-
 // ! Middleware to handle CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || '',
-    methods: ['GET', 'PUT', 'POST', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: process.env.CLIENT_URL || "",
+    methods: ["GET", "PUT", "POST", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
@@ -28,14 +26,14 @@ app.use(
 app.use(express.json());
 
 // ! Routes (uncomment when ready)
-// app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 // app.use("/api/tasks", taskRoutes);
 // app.use("/api/users", userRoutes);
 // app.use("/api/reports", reportRoutes);
 
 // ! Root route
-app.get('/', (req, res) => {
-  res.send('Task Manager Server is Running');
+app.get("/", (req, res) => {
+  res.send("Task Manager Server is Running");
 });
 
 // ! Start server
